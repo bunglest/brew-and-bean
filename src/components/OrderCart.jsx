@@ -155,9 +155,15 @@ export default function OrderCart() {
             <h3 className="text-lg font-bold text-amber-900 mb-4">Current Order</h3>
 
             {cart.length === 0 ? (
-              <p className="text-stone-400 text-sm text-center py-8">
-                No items yet — tap a menu item to add it.
-              </p>
+              <div className="flex flex-col items-center gap-2 py-8 text-stone-300">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <path d="M16 10a4 4 0 0 1-8 0" />
+                </svg>
+                <p className="text-stone-400 text-sm">No items yet — tap a menu item to add it.</p>
+              </div>
             ) : (
               <>
                 {/* Line items */}

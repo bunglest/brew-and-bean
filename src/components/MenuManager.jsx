@@ -201,7 +201,18 @@ export default function MenuManager() {
 
       {/* Item grid */}
       {items.length === 0 ? (
-        <p className="text-stone-400 text-center py-16">No items yet — add one above.</p>
+        <div className="flex flex-col items-center gap-2 py-16 text-stone-300">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="8" y1="6" x2="21" y2="6" />
+            <line x1="8" y1="12" x2="21" y2="12" />
+            <line x1="8" y1="18" x2="21" y2="18" />
+            <line x1="3" y1="6" x2="3.01" y2="6" />
+            <line x1="3" y1="12" x2="3.01" y2="12" />
+            <line x1="3" y1="18" x2="3.01" y2="18" />
+          </svg>
+          <p className="text-stone-400 text-sm">No items yet — add one above.</p>
+        </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {items.map(item => (
