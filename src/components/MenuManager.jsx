@@ -1,23 +1,23 @@
 import { useState, useEffect } from 'react'
 
-const STORAGE_KEY = 'retail_catalog'
+const STORAGE_KEY = 'brewbean_menu'
 
 const SEED_ITEMS = [
-  { id: crypto.randomUUID(), name: 'Cotton Tote Bag',     price: 18.00, category: 'Accessories', inStock: true },
-  { id: crypto.randomUUID(), name: 'Linen Scarf',         price: 32.00, category: 'Apparel',     inStock: true },
-  { id: crypto.randomUUID(), name: 'Ceramic Coffee Mug',  price: 24.00, category: 'Home',        inStock: true },
-  { id: crypto.randomUUID(), name: 'Beeswax Candle',      price: 16.00, category: 'Home',        inStock: true },
-  { id: crypto.randomUUID(), name: 'Knit Beanie',         price: 28.00, category: 'Apparel',     inStock: true },
-  { id: crypto.randomUUID(), name: 'Leather Card Holder', price: 22.00, category: 'Accessories', inStock: true },
+  { id: crypto.randomUUID(), name: 'Espresso',        price: 3.50, category: 'Drinks', inStock: true },
+  { id: crypto.randomUUID(), name: 'Latte',           price: 4.75, category: 'Drinks', inStock: true },
+  { id: crypto.randomUUID(), name: 'Cold Brew',       price: 4.50, category: 'Drinks', inStock: true },
+  { id: crypto.randomUUID(), name: 'Croissant',       price: 3.25, category: 'Pastry', inStock: true },
+  { id: crypto.randomUUID(), name: 'Blueberry Muffin',price: 3.00, category: 'Pastry', inStock: true },
+  { id: crypto.randomUUID(), name: 'Avocado Toast',   price: 8.50, category: 'Food',   inStock: true },
 ]
 
 const CATEGORY_BADGE = {
-  Apparel:     'bg-sky-100 text-sky-700',
-  Accessories: 'bg-emerald-100 text-emerald-700',
-  Home:        'bg-amber-100 text-amber-700',
+  Drinks: 'bg-sky-100 text-sky-700',
+  Food:   'bg-emerald-100 text-emerald-700',
+  Pastry: 'bg-amber-100 text-amber-700',
 }
 
-const EMPTY_FORM = { name: '', price: '', category: 'Apparel', inStock: true }
+const EMPTY_FORM = { name: '', price: '', category: 'Drinks', inStock: true }
 
 function loadItems() {
   try {
@@ -107,7 +107,7 @@ export default function MenuManager() {
     <div>
       {/* Page header */}
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-3xl font-bold text-amber-900">Product Catalog</h2>
+        <h2 className="text-3xl font-bold text-amber-900">Menu</h2>
         {!showForm && (
           <button
             onClick={openAdd}
@@ -161,9 +161,9 @@ export default function MenuManager() {
                 onChange={e => setForm(f => ({ ...f, category: e.target.value }))}
                 className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
               >
-                <option>Apparel</option>
-                <option>Accessories</option>
-                <option>Home</option>
+                <option>Drinks</option>
+                <option>Food</option>
+                <option>Pastry</option>
               </select>
             </div>
 

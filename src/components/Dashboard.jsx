@@ -3,8 +3,8 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from 'recharts'
 
-const MENU_KEY   = 'retail_catalog'
-const ORDERS_KEY = 'retail_transactions'
+const MENU_KEY   = 'brewbean_menu'
+const ORDERS_KEY = 'brewbean_orders'
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -85,7 +85,7 @@ export default function Dashboard() {
 
   // ── Clear all data ─────────────────────────────────────────────────────────
   function clearAllData() {
-    if (!window.confirm('This will delete ALL catalog items and sales. Continue?')) return
+    if (!window.confirm('This will delete ALL menu items and orders. Continue?')) return
     localStorage.removeItem(MENU_KEY)
     localStorage.removeItem(ORDERS_KEY)
     window.location.reload()
@@ -94,20 +94,20 @@ export default function Dashboard() {
   // ── Render ─────────────────────────────────────────────────────────────────
   return (
     <div className="space-y-8">
-      <h2 className="text-3xl font-bold text-amber-900">Sales Analytics</h2>
+      <h2 className="text-3xl font-bold text-amber-900">Dashboard</h2>
 
       {/* ── Section 1: Stat cards ─────────────────────────────────────────── */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <StatCard label="Today's Sales"        value={count} format="number" />
+        <StatCard label="Today's Orders"       value={count} format="number" />
         <StatCard label="Today's Revenue"      value={revenue} format="money" />
-        <StatCard label="Average Sale Value"   value={avgOrder} format="money" />
+        <StatCard label="Average Order Value"  value={avgOrder} format="money" />
       </div>
 
       {/* ── Section 2: Revenue by Hour ────────────────────────────────────── */}
       <div className="bg-white rounded-xl shadow-md border border-amber-100 p-5">
         <h3 className="text-base font-semibold text-amber-900 mb-4">Revenue by Hour</h3>
         {count === 0 ? (
-          <EmptyState message="No sales yet today." />
+          <EmptyState message="No orders yet today." />
         ) : (
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={chartData} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
@@ -136,12 +136,12 @@ export default function Dashboard() {
       {/* ── Section 3: Orders list ────────────────────────────────────────── */}
       <div className="bg-white rounded-xl shadow-md border border-amber-100 overflow-hidden">
         <div className="px-5 py-4 border-b border-stone-100">
-          <h3 className="text-base font-semibold text-amber-900">Today's Sales</h3>
+          <h3 className="text-base font-semibold text-amber-900">Today's Orders</h3>
         </div>
 
         {count === 0 ? (
           <div className="px-5 py-10">
-            <EmptyState message="No sales yet today." />
+            <EmptyState message="No orders yet today." />
           </div>
         ) : (
           <ul className="divide-y divide-stone-100">
