@@ -1,5 +1,7 @@
 # ☕ Brew & Bean — Order Manager
 
+**Live demo: [brew-and-bean-six.vercel.app](https://brew-and-bean-six.vercel.app)**
+
 A lightweight café management web app built for a small business client. Staff can manage the menu, build customer orders, and review same-day sales performance — all from a single browser tab with no backend required. All data is persisted in `localStorage` so the app works offline and survives page refreshes.
 
 ## Tech Stack
