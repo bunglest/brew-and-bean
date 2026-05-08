@@ -1,7 +1,7 @@
 const VIEWS = [
-  { key: 'menu',      long: 'Menu Manager', short: 'Menu'   },
-  { key: 'order',     long: 'Order Cart',   short: 'Orders' },
-  { key: 'dashboard', long: 'Dashboard',    short: 'Stats'  },
+  { key: 'menu',      long: 'Product Catalog', short: 'Catalog'   },
+  { key: 'order',     long: 'New Sale',        short: 'Sale'      },
+  { key: 'dashboard', long: 'Sales Analytics', short: 'Analytics' },
 ]
 
 export default function NavBar({ currentView, onNavigate }) {
@@ -9,7 +9,7 @@ export default function NavBar({ currentView, onNavigate }) {
     <nav className="sticky top-0 z-30 bg-amber-800 text-white shadow-md">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-3 sm:gap-8">
         <span className="text-lg sm:text-xl font-bold tracking-wide whitespace-nowrap">
-          ☕ Brew &amp; Bean
+          🛍️ Retail POS
         </span>
         <div className="flex gap-1 sm:gap-2 flex-wrap">
           {VIEWS.map(({ key, long, short }) => (

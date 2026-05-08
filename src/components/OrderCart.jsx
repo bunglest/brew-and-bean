@@ -1,13 +1,13 @@
 import { useState, useEffect, useCallback } from 'react'
 
-const MENU_KEY   = 'brewbean_menu'
-const ORDERS_KEY = 'brewbean_orders'
+const MENU_KEY   = 'retail_catalog'
+const ORDERS_KEY = 'retail_transactions'
 const TAX_RATE   = 0.08
 
 const CATEGORY_BADGE = {
-  Drinks: 'bg-sky-100 text-sky-700',
-  Food:   'bg-emerald-100 text-emerald-700',
-  Pastry: 'bg-amber-100 text-amber-700',
+  Apparel:     'bg-sky-100 text-sky-700',
+  Accessories: 'bg-emerald-100 text-emerald-700',
+  Home:        'bg-amber-100 text-amber-700',
 }
 
 function loadMenu() {
@@ -95,7 +95,7 @@ export default function OrderCart() {
     localStorage.setItem(ORDERS_KEY, JSON.stringify([...orders, order]))
 
     setCart([])
-    setToast(`Order #${order.id.slice(-4).toUpperCase()} complete!`)
+    setToast(`Sale #${order.id.slice(-4).toUpperCase()} complete!`)
     setTimeout(() => setToast(null), 2000)
   }, [cart, subtotal, tax, total])
 
@@ -110,18 +110,18 @@ export default function OrderCart() {
         </div>
       )}
 
-      <h2 className="text-3xl font-bold text-amber-900 mb-6">New Order</h2>
+      <h2 className="text-3xl font-bold text-amber-900 mb-6">New Sale</h2>
 
       <div className="flex flex-col lg:flex-row gap-6 items-start">
         {/* ── LEFT: menu browser ───────────────────────────────────── */}
         <div className="w-full lg:w-2/3">
           <h3 className="text-sm font-semibold text-stone-500 uppercase tracking-wide mb-3">
-            Menu — tap to add
+            Catalog — tap to add
           </h3>
 
           {menuItems.length === 0 ? (
             <p className="text-stone-400 text-center py-16">
-              No in-stock items found. Add some in Menu Manager.
+              No in-stock items found. Add some in Product Catalog.
             </p>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
@@ -152,7 +152,7 @@ export default function OrderCart() {
         {/* ── RIGHT: cart panel ────────────────────────────────────── */}
         <div className="w-full lg:w-1/3 lg:sticky lg:top-6">
           <div className="bg-white border border-amber-100 rounded-xl shadow-md p-5">
-            <h3 className="text-lg font-bold text-amber-900 mb-4">Current Order</h3>
+            <h3 className="text-lg font-bold text-amber-900 mb-4">Current Sale</h3>
 
             {cart.length === 0 ? (
               <div className="flex flex-col items-center gap-2 py-8 text-stone-300">
@@ -162,7 +162,7 @@ export default function OrderCart() {
                   <line x1="3" y1="6" x2="21" y2="6" />
                   <path d="M16 10a4 4 0 0 1-8 0" />
                 </svg>
-                <p className="text-stone-400 text-sm">No items yet — tap a menu item to add it.</p>
+                <p className="text-stone-400 text-sm">No items yet — tap a catalog item to add it.</p>
               </div>
             ) : (
               <>
@@ -230,7 +230,7 @@ export default function OrderCart() {
               </>
             )}
 
-            {/* Complete Order */}
+            {/* Complete Sale */}
             <button
               onClick={completeOrder}
               disabled={cart.length === 0}
@@ -238,7 +238,7 @@ export default function OrderCart() {
                          disabled:opacity-40 disabled:cursor-not-allowed
                          text-white font-semibold py-2.5 rounded-xl shadow transition"
             >
-              Complete Order
+              Complete Sale
             </button>
           </div>
         </div>
